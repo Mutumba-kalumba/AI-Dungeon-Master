@@ -1,0 +1,165 @@
+.side-quests-container {
+    padding: 2rem;
+    color: #fff;
+    background-color: #111;
+    min-height: 100vh;
+  }
+  
+  .game-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .quest-button {
+    background: #333;
+    border: none;
+    padding: 1rem;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .quest-button:hover {
+    background: #444;
+  }
+  
+  .quest-result {
+    margin-top: 2rem;
+    background: #1c1c1c;
+    padding: 1rem;
+    border-radius: 8px;
+  }
+  
+  .chat-box {
+    margin-top: 1rem;
+    max-height: 300px;
+    overflow-y: auto;
+    background: #222;
+    padding: 1rem;
+    border-radius: 8px;
+  }
+  
+  .chat-message {
+    margin-bottom: 0.5rem;
+  }
+  
+  .chat-message.user {
+    color: #9beeff;
+  }
+  
+  .chat-message.ai {
+    color: #ffb3ff;
+  }
+  
+  .input-section {
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .input-section input {
+    flex: 1;
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: 1px solid #666;
+  }
+  
+  .input-section button {
+    background: #444;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .sidequest-container {
+    background: #1e1e2f;
+    color: #f0f0f0;
+    padding: 2rem;
+    border-radius: 16px;
+    max-width: 700px;
+    margin: auto;
+    margin-top: 3rem;
+    text-align: center;
+    box-shadow: 0 0 10px #5c5cff88;
+  }
+  
+  .sidequest-container input {
+    padding: 0.5rem;
+    margin: 1rem;
+    width: 70%;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: none;
+  }
+  
+  .sidequest-container button {
+    margin: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 12px;
+    background: #5c5cff;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .hint-btn {
+    background: #ff9f00;
+  }
+  
+  .quest-dialogue {
+    font-style: italic;
+    margin-bottom: 1rem;
+  }
+  
+  .riddle {
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+  
+  .feedback {
+    margin-top: 1rem;
+    font-weight: bold;
+    color: #ffd700;
+  }
+  
+  button {
+    background-color: #5c5cff;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #3a3ae0;
+  }
+  
+  .hint-btn {
+    background-color: #ffa500;
+  }
+  
+  .hint-btn:hover {
+    background-color: #e69500;
+  }
+  /*.alibi-name {
+    color: #ffd700;
+    font-weight: bold;
+  }*/
+  
+  .player-question {
+    font-style: italic;
+  }
+  
+  .xp-feedback {
+    color: #4cff85;
+    font-weight: bold;
+    margin-top: 0.5rem;
+  }
+  

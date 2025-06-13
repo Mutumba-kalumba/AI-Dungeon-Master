@@ -1,0 +1,36 @@
+.prompt-story-container {
+    padding: 2rem;
+    color: #fff;
+    text-align: center;
+  }
+  
+  .prompt-input {
+    padding: 0.7rem;
+    width: 60%;
+    border-radius: 10px;
+    border: none;
+    margin: 1rem 0;
+    font-size: 1rem;
+  }
+  
+  .generate-btn {
+    padding: 0.6rem 1.2rem;
+    border: none;
+    background: #4b0082;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  .story-output {
+    margin-top: 2rem;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: left;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 2rem;
+  }
+  

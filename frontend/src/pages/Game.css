@@ -1,0 +1,500 @@
+body {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    margin: 0;
+    padding: 0;
+    /*display: flex;
+    align-items: center;
+    justify-content: center;*/
+    min-height: 100vh;
+    width:100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* Game Container */
+.game-container {
+    text-align: center;
+    color: white;
+    font-family: "Arial", sans-serif;
+    max-width: 90%;
+    margin: auto;
+    padding: 20px;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    box-sizing: border-box;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color:#222222;
+    z-index: -1;
+}
+
+/* Transparent Story Box with Fixed Height & Scroll */
+.story-container {
+    background: rgba(255, 255, 255, 0.1); /* Light transparent white */
+    padding: 20px;
+    border-radius: 12px;
+    max-width: 80%;
+    margin: 20px auto;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
+    height: 300px; /* Fixed height */
+    overflow-y: auto; /* Enables scrolling inside */
+    scrollbar-width: thin; /* Slim scrollbar */
+    scrollbar-color: rgba(255, 255, 255, 0.5) transparent; /* Light scrollbar */
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+/* Glow Effect on Hover */
+.story-container:hover {
+    box-shadow: 0px 0px 20px rgba(255, 0, 153, 0.488);
+}
+
+/* Custom Scrollbar for Webkit Browsers */
+.story-container::-webkit-scrollbar {
+    width: 6px;
+}
+.story-container::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+}
+
+/* Buttons with Purple-Pink Gradient */
+.choice-button, .story-button, .dice-button {
+    background: linear-gradient(to right, #8e44ad, #ff4e50); /* Purple to Pink */
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    margin: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.1s, background 0.3s, box-shadow 0.3s;
+    box-shadow: 0px 4px 10px rgba(255, 81, 47, 0.4);
+}
+
+/* Pressed Effect */
+.choice-button:active, .story-button:active, .dice-button:active {
+    transform: scale(0.95); /* More noticeable shrink effect */
+    background: linear-gradient(to right, #7a318e, #d14045); /* Slightly darker gradient */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3); /* Reduce shadow for depth */
+}
+
+/* Hover Effect */
+.choice-button:hover, .story-button:hover, .dice-button:hover {
+    background: linear-gradient(to right, #cd4c19, #d13509); /* Pink to Purple */
+    transform: scale(1.05);
+    box-shadow: 0px 0px 15px rgba(255, 81, 47, 0.6);
+}
+
+/* Choice Buttons */
+.choices-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    max-width: 900px;
+    margin:auto;
+}
+
+/* Selected Choice */
+.choice-button.selected {
+    border: 2px solid white;
+    transform: scale(1.1);
+}
+
+/* Title Styling */
+h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #f0efec;
+    text-shadow: 0px 0px 10px rgba(102, 0, 255, 0.671);
+    margin-bottom: 10px;
+}
+
+/* Subtle animation on appearance */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.game-container, .story-container, .choice-button {
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+.game-container {
+    position: relative; /* Ensures absolute positioning inside */
+    text-align: center;
+    color: white;
+    font-family: "Arial", sans-serif;
+}
+
+/* Home Button (Fixed in Top Right) */
+.home-button {
+    position: fixed;  /* Fix it to the screen */
+    top: 20px;
+    right: 20px; 
+    background: linear-gradient(to right, #002fff, #00fbff); /* Blue to Cyan */
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s, box-shadow 0.3s;
+    box-shadow: 0px 4px 10px rgba(255, 140, 0, 0.5);
+    z-index: 1000; /* Ensures it stays on top */
+}
+
+/* Hover Effect */
+.home-button:hover {
+    background: linear-gradient(to right, #44abff, #6d0469);
+    transform: scale(1.1);
+    box-shadow: 0px 0px 15px rgba(140, 0, 255, 0.614);
+}
+
+/* Click Effect */
+.home-button:active {
+    transform: scale(0.95);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Light Theme */
+/*.dark-theme {
+    background: linear-gradient(135deg, #f0f0f0, #d9d9d9);
+    color: black;
+}*/
+
+/* Dark Theme (Default) */
+.light-theme {
+    background: linear-gradient(135deg, #f2f2f4, #eaebed);
+    color: white;
+}
+
+/* Apply theme to story container and buttons for consistency */
+.dark-theme .story-container {
+    background: rgba(0, 0, 0, 0.1); 
+    color: white;
+}
+
+.light-theme .story-container {
+    background: rgba(255, 255, 255, 0.1); 
+    color: white;
+}
+
+.story-overlay {
+    color: inherit;
+}
+
+/* Theme Toggle Buttons */
+.top-buttons {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.theme-toggle-button {
+    background: linear-gradient(to right, #008cff, #00d4ff);
+    color: white;
+    border: none;
+    padding: 10px 12px;
+    font-size: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s, box-shadow 0.3s;
+    box-shadow: 0px 4px 10px rgba(0, 140, 255, 0.5);
+}
+
+/* Hover Effect */
+.theme-toggle-button:hover {
+    background: linear-gradient(to right, #44abff, #6d46f5);
+    transform: scale(1.1);
+    box-shadow: 0px 0px 15px rgba(0, 140, 255, 0.6);
+}
+
+/* Click Effect */
+.theme-toggle-button:active {
+    transform: scale(0.95);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.menu-container {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+}
+
+.menu-button {
+    background-color: #555;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.menu-dropdown {
+    position: absolute;
+    top: 50px; /* Increased from 40px to 50px to move it further down */
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Dice Rolling Animation */
+.rolling {
+    animation: roll 0.6s ease-in-out infinite;
+}
+
+@keyframes roll {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(180deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Dice Result */
+.dice-result {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffcc00;
+    text-shadow: 0px 0px 10px rgba(255, 204, 0, 0.8);
+}
+
+/* Selected Choice Styling */
+.selected-choice {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #00ffcc;
+}
+
+/* Story Glow Animation */
+@keyframes glow {
+    0% { box-shadow: 0px 0px 10px rgba(255, 81, 47, 0.4); }
+    50% { box-shadow: 0px 0px 20px rgba(170, 9, 167, 0.6); }
+    100% { box-shadow: 0px 0px 10px rgba(255, 81, 47, 0.4); }
+}
+
+/* Story Container */
+.story-container {
+    animation: glow 1.5s infinite alternate;
+}
+
+/* Save Story Button */
+.save-button {
+    background: linear-gradient(to right, #4CAF50, #81C784); /* Green Gradient */
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    margin: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s, box-shadow 0.3s;
+    box-shadow: 0px 4px 10px rgba(76, 175, 80, 0.4);
+}
+
+.save-button:hover {
+    background: linear-gradient(to right, #66BB6A, #43A047);
+    transform: scale(1.05);
+    box-shadow: 0px 0px 15px rgba(76, 175, 80, 0.6);
+}
+
+.save-button:active {
+    transform: scale(0.95);
+    background: linear-gradient(to right, #388E3C, #2E7D32);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Unified layout for story interaction buttons */
+.story-controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+/* === Navbar Styles === */
+.navbar {
+    animation: none !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 1rem 2rem;
+    padding-left: 20rem;
+    z-index: 1000;
+    box-shadow: 0 0 20px rgba(255, 0, 150, 0.3);
+    display: flex;
+    justify-content: space-between; /* logo left, buttons right */
+    align-items: center;
+    gap:2rem;
+  }
+  
+  
+
+.navbar-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 0 5px #ff0099;
+}
+
+.navbar-links {
+    display: flex;
+    gap: 10rem;
+    list-style: none;
+}
+
+.navbar-links li button {
+    background: linear-gradient(to right, #8e44ad, #ff4e50);
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.3s;
+    box-shadow: 0 2px 6px rgba(255, 81, 47, 0.4);
+}
+
+.navbar-links li button:hover {
+    background: linear-gradient(to right, #cd4c19, #d13509);
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(255, 81, 47, 0.6);
+}
+
+.navbar-theme {
+    position: relative;
+}
+
+.navbar-theme button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    text-shadow: 0 0 5px #00ffff;
+}
+
+.theme-dropdown {
+    position: absolute;
+    right: 0;
+    top: 120%;
+    background-color: rgba(0, 0, 0, 0.9);
+    border-radius: 10px;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.4);
+    z-index: 1000;
+}
+
+.theme-dropdown button {
+    background: none;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.theme-dropdown button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.talk-container {
+    margin: 1rem 0;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.talk-input {
+    padding: 0.5rem;
+    font-size: 1rem;
+    width: 300px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.talk-button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    background-color: #5e60ce;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.npc-response {
+    color: #fffd78;
+    font-style: italic;
+    font-family: 'Georgia', serif;
+}
+.user-choice {
+    color: #ffcc00;
+    font-style: italic;
+  }
+  
+  .user-input {
+    color: #7ec8e3;
+    font-style: italic;
+  }
+  
+
+.character-options {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.character-card {
+  background-color: #1e1e2f;
+  border: 2px solid #8a2be2;
+  border-radius: 12px;
+  padding: 1rem;
+  width: 250px;
+  text-align: center;
+  color: #fff;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+
+.character-card:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+
